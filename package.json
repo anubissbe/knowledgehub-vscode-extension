@@ -4,6 +4,10 @@
   "description": "Enhanced AI assistance with persistent memory, learning, and project context",
   "version": "1.0.0",
   "publisher": "knowledgehub",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anubissbe/knowledgehub-vscode-extension"
+  },
   "engines": {
     "vscode": "^1.80.0"
   },

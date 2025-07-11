@@ -1,0 +1,126 @@
+{
+  "name": "knowledgehub-ai-intelligence",
+  "displayName": "KnowledgeHub AI Intelligence",
+  "description": "Enhanced AI assistance with persistent memory, learning, and project context",
+  "version": "1.0.0",
+  "publisher": "knowledgehub",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "AI",
+    "Machine Learning",
+    "Other"
+  ],
+  "keywords": [
+    "ai",
+    "claude",
+    "copilot",
+    "memory",
+    "context",
+    "learning",
+    "assistant"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "knowledgehub.initSession",
+        "title": "Initialize AI Session",
+        "category": "KnowledgeHub"
+      },
+      {
+        "command": "knowledgehub.enhanceAI",
+        "title": "Enable AI Enhancement",
+        "category": "KnowledgeHub"
+      },
+      {
+        "command": "knowledgehub.showDashboard",
+        "title": "Show AI Dashboard",
+        "category": "KnowledgeHub"
+      },
+      {
+        "command": "knowledgehub.analyzeProject",
+        "title": "Analyze Project Context",
+        "category": "KnowledgeHub"
+      },
+      {
+        "command": "knowledgehub.showMemory",
+        "title": "Show Memory Context",
+        "category": "KnowledgeHub"
+      }
+    ],
+    "configuration": {
+      "title": "KnowledgeHub AI Intelligence",
+      "properties": {
+        "knowledgehub.server.url": {
+          "type": "string",
+          "default": "http://192.168.1.25:3000",
+          "description": "KnowledgeHub server URL"
+        },
+        "knowledgehub.ai.autoEnhance": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically enhance AI requests with KnowledgeHub context"
+        },
+        "knowledgehub.ai.primaryProvider": {
+          "type": "string",
+          "enum": ["github_copilot", "cline", "claude_dev", "auto"],
+          "default": "auto",
+          "description": "Primary AI provider to enhance"
+        },
+        "knowledgehub.ai.enhancementLevel": {
+          "type": "string",
+          "enum": ["minimal", "standard", "maximum"],
+          "default": "maximum",
+          "description": "Level of context enhancement"
+        },
+        "knowledgehub.memory.trackChanges": {
+          "type": "boolean",
+          "default": true,
+          "description": "Track code changes for learning"
+        },
+        "knowledgehub.context.compressionRatio": {
+          "type": "number",
+          "default": 10,
+          "description": "Context compression ratio for small models"
+        }
+      }
+    },
+    "views": {
+      "explorer": [
+        {
+          "id": "knowledgehubAI",
+          "name": "KnowledgeHub AI",
+          "when": "knowledgehub.enabled"
+        }
+      ]
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "knowledgehub",
+          "title": "KnowledgeHub AI",
+          "icon": "$(brain)"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.80.0",
+    "@types/node": "^18.0.0",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "ws": "^8.14.0"
+  }
+}
